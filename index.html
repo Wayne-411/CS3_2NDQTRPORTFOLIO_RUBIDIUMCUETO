@@ -4,19 +4,41 @@
 <head>
     <title>CUETO_Wayne Emmanuel S. 2nd Quarter</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Oswald:wght@700&display=swap"
+        rel="stylesheet">
     <style>
+        :root {
+            --valorant-red: #ff4655;
+            --valorant-white: #ece8e1;
+            --valorant-dark: #0f1923;
+        }
+
         body {
             margin: 0;
             padding: 0;
             font-family: 'Rajdhani', sans-serif;
-            background: url('https://the-post-assets.sgp1.digitaloceanspaces.com/2022/06/CAMPUS-1-JUNE-25.png') no-repeat center center fixed;
+            background: url('https://preview.redd.it/has-anyone-else-seen-the-outline-of-the-person-in-the-v0-01h7a8hdynd81.jpg?width=1920&format=pjpg&auto=webp&s=6bf27ca3c298913e95fefb87ceccc56f9be90316') no-repeat center center fixed;
             background-size: cover;
-            color: white;
+            color: var(--valorant-white);
+            overflow: hidden;
+        }
+
+
+        body::before {
+            content: " ";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
         }
 
         .overlay {
-            background: rgba(0, 0, 0, 0.85);
             position: fixed;
             top: 0;
             left: 0;
@@ -25,47 +47,108 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 100px;
+            padding: 0 10vw;
+            background: rgba(15, 25, 35, 0.4);
+            border: 20px solid rgba(255, 255, 255, 0.05) box-sizing: border-box;
         }
 
         .menu {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            z-index: 3;
         }
 
         .menu h1 {
-            color: #ff4655;
-            font-size: 60px;
-            margin-bottom: 40px;
+            font-family: 'Oswald', sans-serif;
+            color: var(--valorant-red);
+            font-size: 80px;
+            margin: 0 0 40px 0;
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            filter: drop-shadow(4px 4px 0px var(--valorant-dark));
+            animation: glitch 3s infinite;
         }
 
         .menu a {
+            position: relative;
             text-decoration: none;
-            color: white;
-            font-size: 28px;
-            font-weight: bold;
-            margin: 15px 0;
-            transition: color 0.3s, transform 0.3s;
+            color: var(--valorant-white);
+            font-size: 22px;
+            font-weight: 700;
+            margin: 10px 0;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--valorant-red);
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+            transition: all 0.2s ease;
+            width: fit-content;
+            overflow: hidden;
+        }
+
+        .menu a::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--valorant-red);
+            transition: 0.3s;
+            z-index: -1;
         }
 
         .menu a:hover {
-            color: #ff4655;
-            transform: translateX(10px);
+            color: var(--valorant-dark);
+            transform: scale(1.05) translateX(15px);
+        }
+
+        .menu a:hover::after {
+            left: 0;
         }
 
         .logo {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px;
+            gap: 40px;
+            z-index: 3;
         }
 
-        .logo img {
+        .logo img:first-child {
+            width: 300px;
+            filter: brightness(1.2) drop-shadow(0 0 20px var(--valorant-red));
+        }
+
+        .logo img:last-child {
             width: 250px;
-            opacity: 0.9;
+            border: 2px solid var(--valorant-red);
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+
+        @keyframes glitch {
+            0% {
+                transform: translate(0);
+            }
+
+            1% {
+                transform: translate(-2px, 2px);
+            }
+
+            2% {
+                transform: translate(2px, -2px);
+            }
+
+            3% {
+                transform: translate(0);
+            }
+
+            100% {
+                transform: translate(0);
+            }
         }
     </style>
 </head>
@@ -73,12 +156,14 @@
 <body>
     <div class="overlay">
         <div class="menu">
-            <h1>WAYNE’S WORK</h1>
-            <a href="public/2Q1GRubidiumCueto.html">FIRST EXERCISE [First Graded Exercise]</a>
-            <a href="public/Q21NGRubidiumCueto.html">SECOND EXERCISE [First Non-Graded Exercise]</a>
-            <a href="./public/2Q2GRubidiumCueto.html">THIRD EXERCISE [Second Graded Exercise]</a>
-            <a href="public/q41gRubidiumCUETO.html"> 1st Exercise [4th Quarter]
+            <h1>WAYNE’S<br>WORK</h1>
+            <h2> Note, I asked my friends on how to do the glitch screen and animations</h2>
+            <a href="public/2Q1GRubidiumCueto.html">01. FIRST GRADED EXERCISE</a>
+            <a href="public/Q21NGRubidiumCueto.html">02. FIRST NON-GRADED</a>
+            <a href="./public/2Q2GRubidiumCueto.html">03. SECOND GRADED EXERCISE</a>
+            <a href="public/q41gRubidiumCUETO.html">04. 4TH QUARTER EXERCISE</a>
         </div>
+
         <div class="logo">
             <img src="https://wp.logos-download.com/wp-content/uploads/2021/01/Valorant_Logo.png" alt="Valorant Logo">
             <img src="https://store-images.s-microsoft.com/image/apps.21507.13663857844271189.4c1de202-3961-4c40-a0aa-7f4f1388775a.20ed7782-0eda-4f9d-b421-4cc47492edc6"
@@ -86,5 +171,6 @@
         </div>
     </div>
 </body>
+
 
 </html>
