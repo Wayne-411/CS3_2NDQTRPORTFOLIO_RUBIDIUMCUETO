@@ -8,22 +8,22 @@
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #6b0e0e, #1c1c1c);
+            background: linear-gradient(135deg, #f7a7a7, #9e5757);
             margin: 0;
         }
 
         .container {
-            width: 920px;
+            width: 1000px;
             margin: 60px auto;
-            background: white;
+            background: rgb(255, 245, 245);
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 25px rgb(0, 0, 0);
         }
 
         h2 {
             text-align: center;
-            color: #5c101d;
+            color: #c76a79;
             margin-bottom: 20px;
         }
 
@@ -38,24 +38,23 @@
             margin-top: 6px;
             margin-bottom: 18px;
             border-radius: 6px;
-            border: 1px solid #ccc;
+            border: 1px solid #dd9090;
             font-size: 14px;
         }
 
         input:focus,
         select:focus {
             outline: none;
-            border: 1px solid #5c101d;
+            border: 1px solid #e48796;
         }
 
         button {
-            width: 100%;
-            padding: 12px;
-            background: #5c101d;
-            color: white;
+            padding: 6px 12px;
+            background: #f76d84;
+            color: rgb(255, 255, 255);
             border: none;
             border-radius: 6px;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: 0.3s;
@@ -63,7 +62,12 @@
 
         button:hover {
             background: #7b1b2c;
-            transform: scale(1.02);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
         }
 
         .stars {
@@ -90,18 +94,28 @@
             padding: 12px;
             margin-top: 12px;
             border-radius: 8px;
-            border-left: 5px solid #5c101d;
+            border-left: 5px solid #df7e8e;
             font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .movie-info {
+            flex: 1;
+        }
+
+        .delete-btn {
+            margin-left: 10px;
         }
     </style>
-
 </head>
 
 <body>
 
     <div class="container">
 
-        <h2>Add a Movie</h2>
+        <h2>Add / Update a Movie Rating</h2>
 
         <form id="movieForm">
 
@@ -130,7 +144,7 @@
                 <span data-value="5">★</span>
             </div>
 
-            <button type="submit">Add Movie</button>
+            <button type="submit" class="submit-btn">Add Movie</button>
 
         </form>
 
@@ -156,21 +170,52 @@
         });
 
         function loadMovies() {
+
             const movieList = document.getElementById("movieList");
             movieList.innerHTML = "";
+
             let movies = JSON.parse(localStorage.getItem("movies")) || [];
 
-            movies.forEach(movie => {
+            movies.forEach((movie, index) => {
+
                 let starDisplay = "★".repeat(movie.rating);
+
                 const div = document.createElement("div");
                 div.className = "movie-item";
-                div.innerHTML =
-                    `${movie.title} (${movie.year}) - ${movie.genre}, Rating: <span style="color:gold">${starDisplay}</span>`;
+
+                div.innerHTML = `
+<div class="movie-info">
+${movie.title} (${movie.year}) - ${movie.genre}, Rating: <span style="color:gold">${starDisplay}</span>
+</div>
+<button class="delete-btn" onclick="deleteMovie(${index})">Delete</button>
+`;
+
                 movieList.appendChild(div);
+
             });
+
+        }
+
+        function deleteMovie(index) {
+
+            let confirmDelete = confirm("Are you sure you want to delete?");
+
+            if (confirmDelete) {
+
+                let movies = JSON.parse(localStorage.getItem("movies")) || [];
+
+                movies.splice(index, 1);
+
+                localStorage.setItem("movies", JSON.stringify(movies));
+
+                loadMovies();
+
+            }
+
         }
 
         document.getElementById("movieForm").addEventListener("submit", function (e) {
+
             e.preventDefault();
 
             if (rating == 0) {
@@ -182,22 +227,39 @@
             const year = document.getElementById("year").value;
             const genre = document.getElementById("genre").value;
 
-            const newMovie = {
-                title: title,
-                year: year,
-                genre: genre,
-                rating: rating
-            };
-
             let movies = JSON.parse(localStorage.getItem("movies")) || [];
-            movies.push(newMovie);
+
+            let existing = movies.find(movie => movie.title.toLowerCase() === title.toLowerCase());
+
+            if (existing) {
+
+                existing.rating = Math.round((parseInt(existing.rating) + parseInt(rating)) / 2);
+                existing.year = year;
+                existing.genre = genre;
+
+            } else {
+
+                const newMovie = {
+                    title: title,
+                    year: year,
+                    genre: genre,
+                    rating: rating
+                };
+
+                movies.push(newMovie);
+
+            }
+
             localStorage.setItem("movies", JSON.stringify(movies));
 
             this.reset();
+
             rating = 0;
+
             stars.forEach(s => s.classList.remove("active"));
 
             loadMovies();
+
         });
 
         loadMovies();
