@@ -8,22 +8,30 @@
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #f7a7a7, #9e5757);
+            background-image: url("https://cdn.answeroverflow.com/1185567417632575588/image.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
             margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 80px;
         }
 
         .container {
             width: 1000px;
-            margin: 60px auto;
-            background: rgb(255, 245, 245);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgb(0, 0, 0);
+            background: rgba(250, 235, 211, 0.95);
+            padding: 50px;
+            border-radius: 102px;
+            box-shadow: 0 10px 50px rgb(245, 144, 28);
+            margin-top: -300px;
         }
 
         h2 {
             text-align: center;
-            color: #c76a79;
+            color: #9c6112;
             margin-bottom: 20px;
         }
 
@@ -38,30 +46,30 @@
             margin-top: 6px;
             margin-bottom: 18px;
             border-radius: 6px;
-            border: 1px solid #dd9090;
+            border: 1px solid #aa7228;
             font-size: 14px;
         }
 
         input:focus,
         select:focus {
             outline: none;
-            border: 1px solid #e48796;
+            border: 1px solid #e4a452;
         }
 
         button {
             padding: 6px 12px;
-            background: #f76d84;
-            color: rgb(255, 255, 255);
+            background: #f7bb6d;
+            color: rgb(0, 0, 0);
             border: none;
             border-radius: 6px;
-            font-size: 14px;
+            font-size: 20px;
             font-weight: 600;
             cursor: pointer;
             transition: 0.3s;
         }
 
         button:hover {
-            background: #7b1b2c;
+            background: #ff8d0c;
         }
 
         .submit-btn {
@@ -86,15 +94,15 @@
         }
 
         .stars .active {
-            color: gold;
+            color: rgb(139, 85, 14);
         }
 
         .movie-item {
-            background: #f3f3f3;
+            background: #f8e3bb;
             padding: 12px;
             margin-top: 12px;
             border-radius: 8px;
-            border-left: 5px solid #df7e8e;
+            border-left: 5px solid #946809;
             font-size: 15px;
             display: flex;
             justify-content: space-between;
@@ -108,6 +116,10 @@
         .delete-btn {
             margin-left: 10px;
         }
+
+        .list-stars {
+            color: rgb(139, 85, 14);
+        }
     </style>
 </head>
 
@@ -115,7 +127,7 @@
 
     <div class="container">
 
-        <h2>Add / Update a Movie Rating</h2>
+        <h2>The MovieTracker</h2>
 
         <form id="movieForm">
 
@@ -185,7 +197,7 @@
 
                 div.innerHTML = `
 <div class="movie-info">
-${movie.title} (${movie.year}) - ${movie.genre}, Rating: <span style="color:gold">${starDisplay}</span>
+${movie.title} (${movie.year}) - ${movie.genre}, Rating: <span class="list-stars">${starDisplay}</span>
 </div>
 <button class="delete-btn" onclick="deleteMovie(${index})">Delete</button>
 `;
