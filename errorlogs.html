@@ -1,120 +1,138 @@
-nav {
-    width: 100%;
-    background-color: #333;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="author" content="OGERIO, NATHAN/ CUETO, WAYNE">
+  <meta name="description" content="testing and debugging">
+  <meta name="keywords" content="testing and debugging">
+  <title> Nlogonia Debugging - Your Name</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@300&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 
-html {
-  height: 100%;
-  width: 100%;
-}
+  <style>
+    tr:nth-child(1) ~ tr:nth-child(odd) {
+      background-color: lightgray;
+      color: black;
+    }
+    td, th {
+      padding: 10px;
+    }
+    table {
+      width: 90%;
+      margin: 0 auto;
+    }
+    caption {
+      font-size: 2em;
+      font-weight: bold;
+      padding: 10px;
+    }
+    
+  </style>
+</head>
 
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: cornsilk;
-  color: royalblue;
-  padding: 0;
-  margin: 0;
-  padding-top: 60px; 
-}
+<body>
+  <header>
+    <nav>
+      <a href="index.html#start">Table</a>
+      <a href="index.html#input">Input</a>
+      <a href="index.html#output">Output</a>
+    </nav>
+    
+    <h1 style="padding: 30px">Your Name / Section Mar 2026 </h1>
+  </header>
 
-section, header {
-  padding-left: 2%;
-}
-
-nav a {
-    display: inline-block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-}
-
-nav a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-#coordinatePlane {
-    position: relative;
-    height: 400px;
-    width: 400px;
-    border: 1px solid black;
-    margin-top: 20px;
-}
-
-.point {
-    position: absolute;
-    height: 10px;
-    width: 10px;
-    background-color: red;
-    border-radius: 50%;
-}
-
-.axis {
-    position: absolute;
-    background-color: black;
-}
-
-#xAxis {
-    position: absolute;
-    left: 0;
-    top: 200px;
-    width: 100%;
-    height: 1px;
-}
-
-#yAxis {
-    position: absolute;
-    left: 200px;
-    bottom: 0;
-    width: 1px;
-    height: 100%;
-}
-
-footer {
-    width: 100%;
-    background-color: white;
-    color: #333;
-    text-align: center;
-    padding: 20px 0;
-}
-
-.icon {
-    width: 32px;
-    height: 32px;
-    display: inline-block;
-    background: url('sprites.png') no-repeat;
-}
-
-.facebook { background-position: -226px -129px; }
-.twitter { background-position: -340px -129px; }
-.github { background-position: -456px -129px; }
-
-.facebook:hover { background-position: -226px -55px; }
-.twitter:hover { background-position: -340px -54px; }
-.github:hover { background-position: -456px -54px; }
-
-table {
-  border-collapse: collapse;
-}
-
-th, td, tr {
-  padding: 5px;
-  border: 1px solid #333;  
-}
-
-.rColor {
-  background-color: navy;
-  color: white;
-}
-
-
-
-
+  <section id="table">
+    <table> 
+      <caption> Error Logs - place errors found in the table below</caption>
+      <tr class="rColor">
+        <th> item# </th> 
+        <th> code line#<br/>CSS or JS </th> 
+        <th> Description</th>
+        <th> Correction Done</th>
+      </tr>
+      <tr>
+        <td> 1 </td> 
+        <td> JS Line 7 </td> 
+        <td> Missing .style object for left property </td>
+        <td> Changed to point.style.left </td>
+      </tr>
+      <tr>
+        <td> 2 </td> 
+        <td> JS Line 8 </td> 
+        <td> Missing .style object for bottom property </td>
+        <td> Changed to point.style.bottom </td>
+      </tr>
+      <tr>
+        <td> 3 </td> 
+        <td> JS Line 13 </td> 
+        <td> Incorrect if-else sequence for divisa check </td>
+        <td> Checked x == x0 || y == y0 first </td>
+      </tr>
+      <tr>
+        <td> 4 </td> 
+        <td> JS Line 28 </td> 
+        <td> Missing closing curly brace } for function </td>
+        <td> Added } at the end of script </td>
+      </tr>
+      <tr>
+        <td> 5 </td> 
+        <td> CSS Line 26 </td> 
+        <td> Nav bar scrolls with content </td>
+        <td> Added position: fixed </td>
+      </tr>
+      <tr>
+        <td> 6 </td> 
+        <td> CSS Line 27 </td> 
+        <td> Navigation bar missing top </td>
+        <td> Added  top: 0 </td>
+      </tr>
+      <tr>
+        <td> 7 </td> 
+        <td> CSS Line 33 </td> 
+        <td> Nav links are stacking vertically </td>
+        <td> Changed display to inline-block </td>
+      </tr>
+     <tr>
+        <td> 8 </td> 
+        <td> CSS Line 40 </td> 
+        <td> Incorrect space between 'a' and ':hover' </td>
+        <td> Removed space to result in nav a:hover </td>
+      </tr>
+      <tr>
+        <td> 9 </td> 
+        <td> CSS Line 46 </td> 
+        <td> .point missing position type </td>
+        <td> Added position: absolute </td>
+      </tr>
+      <tr>
+        <td> 10 </td> 
+        <td> CSS Line  </td> 
+        <td>  </td>
+        <td>  </td>
+      </tr>
+    </table>
+    <hr>
+  </section>
+  
+   
+  <footer>
+    <a href="https://facebook.com"> 
+    <div class="icon facebook"></div>
+    </a>
+    <a href="https://twitter.com">
+    <div class="icon twitter"></div>
+    </a>
+    <a href="https://github.com">
+    <div class="icon github"></div>
+    </a>
+  </footer>
+ 
+</body>
+</html>
 
 
 
